@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/button menu.png-db68fd0bda1d00c123295c3c16cdce5e.stex"
+
+[deps]
+
+source_file="res://buttonset 1/button menu.png"
+source_md5="99843533cba2a86d49f8dc5851000aa6"
+
+dest_files=[ "res://.import/button menu.png-db68fd0bda1d00c123295c3c16cdce5e.stex" ]
+dest_md5="9aec714c8d69ffd3e868ead97fa6bc37"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=2
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

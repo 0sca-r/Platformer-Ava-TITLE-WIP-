@@ -1,0 +1,199 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://alt_player.gd" type="Script" id=1]
+[ext_resource path="res://Red_mask_sprites/Red_00.png" type="Texture" id=2]
+[ext_resource path="res://Red_mask_sprites/Red_0A.png" type="Texture" id=3]
+[ext_resource path="res://Red_mask_sprites/Red_0b.png" type="Texture" id=4]
+[ext_resource path="res://Red_mask_sprites/Red_01.png" type="Texture" id=5]
+[ext_resource path="res://Red_mask_sprites/Red_02.png" type="Texture" id=6]
+[ext_resource path="res://Red_mask_sprites/Red_03.png" type="Texture" id=7]
+[ext_resource path="res://Red_mask_sprites/Red_04.png" type="Texture" id=8]
+[ext_resource path="res://Red_mask_sprites/Red_05.png" type="Texture" id=9]
+[ext_resource path="res://Red_mask_sprites/Red_06.png" type="Texture" id=10]
+[ext_resource path="res://Red_mask_sprites/Red_07.png" type="Texture" id=11]
+[ext_resource path="res://Red_mask_sprites/Red_08.png" type="Texture" id=12]
+[ext_resource path="res://UI_overlay.tscn" type="PackedScene" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+
+[sub_resource type="ShaderMaterial" id=4]
+
+render_priority = 0
+
+[sub_resource type="ShaderMaterial" id=5]
+
+render_priority = 0
+
+[sub_resource type="CapsuleShape2D" id=6]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 20.0
+
+[node name="player" type="KinematicBody2D" index="0"]
+
+use_parent_material = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="rotate" type="Node2D" parent="." index="0"]
+
+scale = Vector2( 0.2, 0.2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Anim" type="AnimatedSprite" parent="rotate" index="0"]
+
+position = Vector2( -1.89966, 8.04411 )
+scale = Vector2( 6.35355, 4.75468 )
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -0.997514, 7.78566 )
+scale = Vector2( 1.09291, 0.738804 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Timer_Dash" type="Timer" parent="." index="2"]
+
+process_mode = 0
+wait_time = 0.4
+one_shot = true
+autostart = false
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+
+position = Vector2( -225.822, -191.813 )
+offset = Vector2( -50, 0 )
+anchor_mode = 0
+rotating = false
+current = true
+zoom = Vector2( 0.6, 0.6 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Node" parent="Camera2D" index="0" instance=ExtResource( 13 )]
+
+margin_left = -62.0
+margin_top = -11.0
+margin_right = -62.0
+margin_bottom = -11.0
+
+[node name="Particles2D" type="Particles2D" parent="." index="4"]
+
+emitting = false
+amount = 60
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Material", "Textures", "Time", "Transform" ]
+
+[node name="Dash_Particles" type="Particles2D" parent="." index="5"]
+
+material = SubResource( 4 )
+emitting = true
+amount = 8
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 5 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Material", "Process Material", "Transform" ]
+
+[node name="Position2D" type="Position2D" parent="." index="6"]
+
+position = Vector2( 50, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="." index="7"]
+
+editor/display_folded = true
+position = Vector2( 23.4722, 23.5885 )
+scale = Vector2( 0.3079, 0.287565 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( -35.3414, -88.1513 )
+scale = Vector2( 6.16832, 2.93742 )
+shape = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+

@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Button left.png-cf3a4f9caccc016cb62ad83d40489566.stex"
+
+[deps]
+
+source_file="res://buttonset 1/Button left.png"
+source_md5="b162578d1fd6d539355378323834fca1"
+
+dest_files=[ "res://.import/Button left.png-cf3a4f9caccc016cb62ad83d40489566.stex" ]
+dest_md5="d4ba573d06695b1d7bb6a69d5e7836f4"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=2
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
