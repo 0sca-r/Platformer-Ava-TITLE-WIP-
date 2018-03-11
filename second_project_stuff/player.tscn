@@ -12,7 +12,6 @@
 [ext_resource path="res://Red_mask_sprites/Red_06.png" type="Texture" id=10]
 [ext_resource path="res://Red_mask_sprites/Red_07.png" type="Texture" id=11]
 [ext_resource path="res://Red_mask_sprites/Red_08.png" type="Texture" id=12]
-[ext_resource path="res://UI_overlay.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -52,7 +51,11 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 20.0
 
-[node name="player" type="KinematicBody2D" index="0"]
+[sub_resource type="ShaderMaterial" id=7]
+
+render_priority = 0
+
+[node name="player" type="KinematicBody2D"]
 
 use_parent_material = true
 input_pickable = false
@@ -90,12 +93,10 @@ autostart = false
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 
-position = Vector2( -225.822, -191.813 )
-offset = Vector2( -50, 0 )
-anchor_mode = 0
+anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.6, 0.6 )
+zoom = Vector2( 0.8, 0.8 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -115,13 +116,6 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Transform" ]
-
-[node name="Node" parent="Camera2D" index="0" instance=ExtResource( 13 )]
-
-margin_left = -62.0
-margin_top = -11.0
-margin_right = -62.0
-margin_bottom = -11.0
 
 [node name="Particles2D" type="Particles2D" parent="." index="4"]
 
@@ -193,6 +187,28 @@ position = Vector2( -35.3414, -88.1513 )
 scale = Vector2( 6.16832, 2.93742 )
 shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Particles2D2" type="Particles2D" parent="." index="8"]
+
+emitting = true
+amount = 8
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 7 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Textures", "Time" ]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
